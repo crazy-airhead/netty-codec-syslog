@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.net.InetAddress;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
@@ -54,7 +55,8 @@ public abstract class MessageParserTest<P extends MessageParser> {
     assertEquals(expected.facility(), actual.facility(), "facility should match.");
     assertEquals(expected.level(), actual.level(), "level should match.");
     assertEquals(expected.remoteAddress(), actual.remoteAddress(), "remoteAddress should match.");
-    assertEquals(expected.date(), actual.date(), "date should match.");
+    LocalDateTime expectedDate = expected.date().withYear(actual.date().getYear());
+    assertEquals(expectedDate, actual.date(), "date should match.");
     assertEquals(expected.rawMessage(), actual.rawMessage(), "rawMessage should match.");
 
     assertEquals(expected.deviceEventClassId(), actual.deviceEventClassId(), "deviceEventClassId does not match.");

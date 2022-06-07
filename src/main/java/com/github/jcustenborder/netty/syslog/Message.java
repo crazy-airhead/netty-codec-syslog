@@ -55,7 +55,7 @@ public interface Message {
   String rawMessage();
 
   /**
-   * @return
+   * @return MessageType
    */
   @JsonProperty(required = true)
   MessageType type();
